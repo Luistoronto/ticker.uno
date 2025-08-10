@@ -1,28 +1,49 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Página de Prueba - Ticker Uno</title>
-    <style>
-      body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-        font-family: sans-serif;
-        background-color: #f7f7f7;
-      }
-      img {
-        max-width: 300px;
-        height: auto;
-        margin-top: 20px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Hola desde GitHub y Vercel 🚀</h1>
-    <img src="./Logo TickerUno.jpg" alt="Logo Ticker Uno" />
-  </body>
-</html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mi Plataforma Cripto</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #121212; color: #eee; }
+    header { background: #1f2937; padding: 20px; text-align: center; }
+    header h1 { margin: 0; color: #10b981; }
+    nav a { color: #eee; margin: 0 15px; text-decoration: none; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+    main { padding: 20px; max-width: 800px; margin: auto; }
+    footer { text-align: center; padding: 15px; background: #1f2937; margin-top: 40px; font-size: 14px; }
+    .btn-contact { background: #10b981; color: #121212; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+    .btn-contact:hover { background: #059669; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mi Plataforma Cripto</h1>
+    <nav>
+      <a href="#servicios">Servicios</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+  <main>
+    <section id="servicios">
+      <h2>Servicios</h2>
+      <p>Ofrecemos una plataforma segura para operar criptomonedas con facilidad y confianza.</p>
+    </section>
 
+    <section id="nosotros">
+      <h2>Nosotros</h2>
+      <p>Somos un equipo apasionado por la innovación financiera y la tecnología blockchain.</p>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>Escribinos a <a href="mailto:contacto@tuplataforma.com">contacto@tuplataforma.com</a> o usa el botón:</p>
+      <button class="btn-contact" onclick="window.location='mailto:contacto@tuplataforma.com'">Enviar Email</button>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 Mi Plataforma Cripto. Todos los derechos reservados.
+  </footer>
+</body>
+</html>
