@@ -63,20 +63,6 @@ export default function Navbar() {
             ticker<span style={{ color: "#f97316" }}>.</span>uno
           </Link>
 
-          {/* Nav links */}
-          <div style={{ display: "flex", alignItems: "center", gap: "4px", marginLeft: "8px" }}>
-            <Link href="/mapa" style={{
-              fontSize: "13px",
-              fontWeight: "500",
-              color: "#374151",
-              textDecoration: "none",
-              padding: "5px 12px",
-              borderRadius: "8px",
-            }}>
-              {lang === "es" ? "Mapa" : "Map"}
-            </Link>
-          </div>
-
           {/* Spacer */}
           <div style={{ flex: 1 }} />
 
