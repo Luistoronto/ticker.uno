@@ -37,6 +37,29 @@ export default function Sidebar({ lang }) {
       overflowY: "auto",
     }}>
       <div style={{ padding: "12px 0" }}>
+
+        {/* Link principal Mapa */}
+        <Link href="/mapa" style={{ textDecoration: "none" }}>
+          <div style={{
+            display: "flex", alignItems: "center", gap: "10px",
+            padding: "7px 16px 10px",
+            fontSize: "12px",
+            color: "#374151",
+            fontWeight: "500",
+            borderBottom: "1px solid #f3f4f6",
+            marginBottom: "4px",
+          }}>
+            <span style={{
+              width: "22px", height: "22px", borderRadius: "6px",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              flexShrink: 0, background: "#fff7ed", color: "#f97316",
+            }}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+            </span>
+            {lang === "es" ? "Mapa cripto" : "Crypto map"}
+          </div>
+        </Link>
+
         {groups.map((group) => (
           <div key={group.label.es}>
 
