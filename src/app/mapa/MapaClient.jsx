@@ -45,7 +45,7 @@ export default function MapaClient() {
             }}>
               {tx.hero}
             </h1>
-            <p style={{ fontSize: "13px", color: "#6b7280", maxWidth: "480px", lineHeight: "1.6" }}>
+            <p style={{ fontSize: "13px", color: "#374151", maxWidth: "480px", lineHeight: "1.6" }}>
               {tx.sub}
             </p>
           </div>
@@ -66,7 +66,7 @@ export default function MapaClient() {
                 padding: "12px 18px",
               }}>
                 <div style={{ fontSize: "18px", fontWeight: "600", color: "#111" }}>{s.n}</div>
-                <div style={{ fontSize: "11px", color: "#9ca3af", marginTop: "2px" }}>{s.l}</div>
+                <div style={{ fontSize: "11px", color: "#4b5563", marginTop: "2px" }}>{s.l}</div>
               </div>
             ))}
           </div>
@@ -119,7 +119,7 @@ export default function MapaClient() {
 
                     {/* Tagline */}
                     <p style={{
-                      fontSize: "11px", color: "#6b7280",
+                      fontSize: "11px", color: "#374151",
                       lineHeight: "1.5", marginBottom: "12px",
                     }}>
                       {section[lang]?.tagline}
@@ -152,7 +152,7 @@ export default function MapaClient() {
                 background: "transparent",
                 opacity: 0.5,
               }}>
-                <div style={{ fontSize: "13px", fontWeight: "500", color: "#d1d5db", marginBottom: "4px" }}>
+                <div style={{ fontSize: "13px", fontWeight: "500", color: "#6b7280", marginBottom: "4px" }}>
                   {name}
                 </div>
                 <div style={{ fontSize: "11px", color: "#e5e7eb" }}>{tx.soon}</div>
