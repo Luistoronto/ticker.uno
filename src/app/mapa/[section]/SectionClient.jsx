@@ -18,8 +18,8 @@ export default function SectionClient({ section }) {
       <div style={{ flex: 1, minWidth: 0, padding: "40px", maxWidth: "960px" }}>
 
         {/* Breadcrumb */}
-        <nav style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "12px", color: "#9ca3af", marginBottom: "28px" }}>
-          <Link href="/mapa" style={{ color: "#9ca3af", textDecoration: "none" }}>
+        <nav style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "12px", color: "#4b5563", marginBottom: "28px" }}>
+          <Link href="/mapa" style={{ color: "#4b5563", textDecoration: "none" }}>
             {lang === "es" ? "mapa" : "map"}
           </Link>
           <span>/</span>
@@ -34,12 +34,12 @@ export default function SectionClient({ section }) {
             </h1>
             <span style={{
               fontSize: "11px", padding: "4px 12px", borderRadius: "20px",
-              border: "1px solid #e5e7eb", color: "#6b7280", flexShrink: 0, marginTop: "6px",
+              border: "1px solid #e5e7eb", color: "#374151", flexShrink: 0, marginTop: "6px",
             }}>
               {totalItems} {lang === "es" ? "conceptos" : "concepts"}
             </span>
           </div>
-          <p style={{ fontSize: "13px", color: "#6b7280", lineHeight: "1.7", maxWidth: "560px" }}>
+          <p style={{ fontSize: "13px", color: "#374151", lineHeight: "1.7", maxWidth: "560px" }}>
             {data.tagline}
           </p>
         </div>
@@ -60,7 +60,7 @@ export default function SectionClient({ section }) {
             display: "flex", alignItems: "center", gap: "10px",
             padding: "9px 16px", marginBottom: "28px",
             border: "1px dashed #e5e7eb", borderRadius: "10px",
-            fontSize: "11px", color: "#d1d5db",
+            fontSize: "11px", color: "#6b7280",
           }}>
             <span>★</span>
             <span>{lang === "es" ? "Sección disponible para patrocinar — contacto@ticker.uno" : "Section available to sponsor — contacto@ticker.uno"}</span>
@@ -73,7 +73,7 @@ export default function SectionClient({ section }) {
             <div key={sub.id}>
               {/* Título subcategoría */}
               <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "14px" }}>
-                <span style={{ fontSize: "10px", fontWeight: "600", letterSpacing: ".08em", textTransform: "uppercase", color: "#d1d5db", whiteSpace: "nowrap" }}>
+                <span style={{ fontSize: "10px", fontWeight: "600", letterSpacing: ".08em", textTransform: "uppercase", color: "#6b7280", whiteSpace: "nowrap" }}>
                   {sub[lang]?.title || sub.es?.title}
                 </span>
                 <div style={{ flex: 1, height: "1px", background: "#f3f4f6" }} />
@@ -95,13 +95,13 @@ export default function SectionClient({ section }) {
                           transition: "border-color .12s",
                           height: "100%",
                         }}
-                        onMouseEnter={e => e.currentTarget.style.borderColor = "#d1d5db"}
+                        onMouseEnter={e => e.currentTarget.style.borderColor = "#6b7280"}
                         onMouseLeave={e => e.currentTarget.style.borderColor = "#e5e7eb"}
                       >
                         <div style={{ fontSize: "12px", fontWeight: "600", color: section.color, marginBottom: "3px" }}>
                           {itemData?.name}
                         </div>
-                        <div style={{ fontSize: "10px", color: "#9ca3af", marginBottom: "8px", lineHeight: "1.4" }}>
+                        <div style={{ fontSize: "10px", color: "#4b5563", marginBottom: "8px", lineHeight: "1.4" }}>
                           {itemData?.subtitle}
                         </div>
                         {item.tags && (

@@ -11,16 +11,16 @@
   --border-medium: #d1d5db;
   --bg: #ffffff;
   --surface: #fafafa;
-  --text: #111111;
-  --muted: #6b7280;
-  --subtle: #9ca3af;
+  --text: #0f0f0f;        /* antes #111111 — negro más puro */
+  --muted: #374151;       /* antes #6b7280 — mucho más legible */
+  --subtle: #6b7280;      /* antes #9ca3af — ahora es el "suave" real */
 }
 
 * { box-sizing: border-box; }
 
 body {
   background: #ffffff;
-  color: #111111;
+  color: #0f0f0f;
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
