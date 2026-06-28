@@ -45,7 +45,7 @@ export default function Sidebar({ lang }) {
               padding: "10px 16px 4px",
               fontSize: "10px",
               fontWeight: "600",
-              color: "#d1d5db",
+              color: "#6b7280",
               letterSpacing: ".08em",
               textTransform: "uppercase",
             }}>
@@ -69,7 +69,7 @@ export default function Sidebar({ lang }) {
                     padding: "7px 16px",
                     fontSize: "12px",
                     textDecoration: "none",
-                    color: active ? "#111111" : "#6b7280",
+                    color: active ? "#111111" : "#374151",
                     background: active ? "#f9fafb" : "transparent",
                     borderLeft: active ? `2px solid ${section.color}` : "2px solid transparent",
                     fontWeight: active ? "500" : "400",
