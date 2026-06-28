@@ -34,16 +34,16 @@ export default function ItemClient({ item, subcategory, section }) {
           {/* Breadcrumb */}
           <nav style={{
             display: "flex", alignItems: "center", gap: "6px",
-            fontSize: "12px", color: "#9ca3af", marginBottom: "24px", flexWrap: "wrap",
+            fontSize: "12px", color: "#4b5563", marginBottom: "24px", flexWrap: "wrap",
           }}>
-            <Link href="/mapa" style={{ color: "#9ca3af", textDecoration: "none" }}>
+            <Link href="/mapa" style={{ color: "#4b5563", textDecoration: "none" }}>
               {lang === "es" ? "mapa" : "map"}
             </Link>
-            <span style={{ color: "#d1d5db" }}>/</span>
-            <Link href={`/mapa/${section.id}`} style={{ color: "#9ca3af", textDecoration: "none" }}>
+            <span style={{ color: "#6b7280" }}>/</span>
+            <Link href={`/mapa/${section.id}`} style={{ color: "#4b5563", textDecoration: "none" }}>
               {sectionData?.title}
             </Link>
-            <span style={{ color: "#d1d5db" }}>/</span>
+            <span style={{ color: "#6b7280" }}>/</span>
             <span style={{ color: "#374151" }}>{data?.name}</span>
           </nav>
 
@@ -64,7 +64,7 @@ export default function ItemClient({ item, subcategory, section }) {
           </h1>
 
           {/* Subtítulo */}
-          <p style={{ fontSize: "14px", color: "#9ca3af", marginBottom: "18px" }}>
+          <p style={{ fontSize: "14px", color: "#4b5563", marginBottom: "18px" }}>
             {data?.subtitle}
           </p>
 
@@ -98,7 +98,7 @@ export default function ItemClient({ item, subcategory, section }) {
                   borderRadius: "10px",
                   padding: "10px 14px",
                 }}>
-                  <div style={{ fontSize: "10px", color: "#9ca3af", marginBottom: "3px" }}>
+                  <div style={{ fontSize: "10px", color: "#4b5563", marginBottom: "3px" }}>
                     {card.label}
                   </div>
                   <div style={{
@@ -132,7 +132,7 @@ export default function ItemClient({ item, subcategory, section }) {
               rel="noopener noreferrer"
               style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
-                fontSize: "12px", color: "#6b7280",
+                fontSize: "12px", color: "#374151",
                 border: "1px solid #e5e7eb", borderRadius: "10px",
                 padding: "8px 16px", textDecoration: "none",
                 marginBottom: "22px", background: "#ffffff",
@@ -156,7 +156,7 @@ export default function ItemClient({ item, subcategory, section }) {
             background: "#fafafa",
           }}>
             <span style={{ color: "#f97316", fontSize: "12px" }}>★</span>
-            <span style={{ fontSize: "11px", color: "#d1d5db" }}>
+            <span style={{ fontSize: "11px", color: "#6b7280" }}>
               {lang === "es"
                 ? `Espacio disponible para patrocinador del sector ${sectionData?.title}`
                 : `Sponsor slot available for the ${sectionData?.title} sector`}
@@ -176,7 +176,7 @@ export default function ItemClient({ item, subcategory, section }) {
             <>
               <div style={{
                 fontSize: "10px", fontWeight: "600", letterSpacing: ".08em",
-                textTransform: "uppercase", color: "#d1d5db", marginBottom: "10px",
+                textTransform: "uppercase", color: "#6b7280", marginBottom: "10px",
                 display: "flex", alignItems: "center", gap: "10px",
               }}>
                 {lang === "es" ? "En la misma sección" : "In the same section"}
@@ -207,7 +207,7 @@ export default function ItemClient({ item, subcategory, section }) {
                           transition: "border-color .12s, transform .1s",
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.borderColor = "#9ca3af";
+                          e.currentTarget.style.borderColor = "#4b5563";
                           e.currentTarget.style.transform = "translateY(-1px)";
                         }}
                         onMouseLeave={(e) => {
@@ -218,7 +218,7 @@ export default function ItemClient({ item, subcategory, section }) {
                         <div style={{ fontSize: "11px", fontWeight: "600", color: "#374151", marginBottom: "2px" }}>
                           {relData?.name}
                         </div>
-                        <div style={{ fontSize: "10px", color: "#9ca3af" }}>
+                        <div style={{ fontSize: "10px", color: "#4b5563" }}>
                           {relData?.subtitle}
                         </div>
                       </div>
@@ -234,7 +234,7 @@ export default function ItemClient({ item, subcategory, section }) {
             href={`/mapa/${section.id}`}
             style={{
               display: "inline-flex", alignItems: "center", gap: "6px",
-              fontSize: "12px", color: "#9ca3af", textDecoration: "none",
+              fontSize: "12px", color: "#4b5563", textDecoration: "none",
             }}
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
