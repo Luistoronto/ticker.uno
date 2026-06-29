@@ -18,7 +18,7 @@ const icons = {
 const groups = [
   { label: { es: "Ecosistema", en: "Ecosystem" }, ids: ["fundamentos", "layer-1", "layer-2", "defi", "stablecoins"] },
   { label: { es: "Acceso", en: "Access" }, ids: ["wallets", "exchanges"] },
-  { label: { es: "Contexto", en: "Context" }, ids: ["regulacion"] },
+  { label: { es: "Contexto", en: "Context" }, ids: ["regulacion", "actores"] },
 ];
 
 export default function Sidebar({ lang }) {
@@ -78,6 +78,35 @@ export default function Sidebar({ lang }) {
             {/* Items del grupo */}
             {group.ids.map((id) => {
               const section = sections.find((s) => s.id === id);
+              if (!section && id !== "actores") return null;
+
+              // Caso especial: Actores no está en content.js
+              if (id === "actores") {
+                const active = activeSection === "actores" || pathname.startsWith("/actores");
+                return (
+                  <Link key="actores" href="/actores" style={{ textDecoration: "none" }}>
+                    <div style={{
+                      display: "flex", alignItems: "center", gap: "10px",
+                      padding: "7px 16px", fontSize: "12px",
+                      color: active ? "#111111" : "#6b7280",
+                      background: active ? "#f9fafb" : "transparent",
+                      borderLeft: active ? "2px solid #ec4899" : "2px solid transparent",
+                      fontWeight: active ? "500" : "400",
+                    }}>
+                      <span style={{
+                        width: "22px", height: "22px", borderRadius: "6px",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        flexShrink: 0,
+                        background: active ? "#ec489918" : "#ec489910",
+                        color: active ? "#ec4899" : "#ec489999",
+                      }}>
+                        {icons["users"] || <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>}
+                      </span>
+                      {lang === "es" ? "Actores" : "Actors"}
+                    </div>
+                  </Link>
+                );
+              }
               if (!section) return null;
               const active = activeSection === id;
 
