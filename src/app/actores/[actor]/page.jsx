@@ -7,7 +7,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const actor = actores.find((a) => a.id === params.actor);
+  const { actor: actorId } = await params;
+  const actor = actores.find((a) => a.id === actorId);
   if (!actor) return {};
   return {
     title: `${actor.es.nombre} — Actores — ticker.uno`,
@@ -15,8 +16,10 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function ActorPage({ params }) {
-  const actor = actores.find((a) => a.id === params.actor);
+export default async function ActorPage({ params }) {
+  const { actor: actorId } = await params;
+  const actor = actores.find((a) => a.id === actorId);
   if (!actor) notFound();
   return <ActorClient actor={actor} />;
 }
+
