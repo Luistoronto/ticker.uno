@@ -1,19 +1,66 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-// Datos de ejemplo — reemplazar por el fetch real a CoinGecko
-// Cada coin necesita: symbol (para mostrar), slug (para el ícono), price, change, up
-const COINS = [
-  { symbol: "BTC", slug: "btc", price: "$97,412", change: "2.4%", up: true },
-  { symbol: "ETH", slug: "eth", price: "$3,684", change: "1.1%", up: false },
-  { symbol: "SOL", slug: "sol", price: "$218", change: "5.7%", up: true },
-  { symbol: "USDC", slug: "usdc", price: "$1.00", change: "0.0%", up: null },
-  { symbol: "DOGE", slug: "doge", price: "$0.184", change: "3.2%", up: false },
-  { symbol: "BNB", slug: "bnb", price: "$612", change: "0.8%", up: true },
-  { symbol: "XRP", slug: "xrp", price: "$2.31", change: "1.6%", up: true },
-  { symbol: "ADA", slug: "ada", price: "$0.891", change: "0.4%", up: false },
+// symbol/slug quedan fijos (para mostrar e ícono), id es el ID de CoinGecko
+const COIN_CONFIG = [
+  { symbol: "BTC", slug: "btc", id: "bitcoin" },
+  { symbol: "ETH", slug: "eth", id: "ethereum" },
+  { symbol: "SOL", slug: "sol", id: "solana" },
+  { symbol: "USDC", slug: "usdc", id: "usd-coin" },
+  { symbol: "DOGE", slug: "doge", id: "dogecoin" },
+  { symbol: "BNB", slug: "bnb", id: "binancecoin" },
+  { symbol: "XRP", slug: "xrp", id: "ripple" },
+  { symbol: "ADA", slug: "ada", id: "cardano" },
 ];
+
+// Se muestran mientras carga el primer fetch, o si la API falla
+const FALLBACK_COINS = COIN_CONFIG.map((c) => ({
+  ...c,
+  price: "—",
+  change: "—",
+  up: null,
+}));
+
+function formatPrice(value) {
+  if (value == null) return "—";
+  if (value >= 1) {
+    return (
+      "$" +
+      value.toLocaleString("en-US", {
+        minimumFractionDigits: value >= 100 ? 0 : 2,
+        maximumFractionDigits: value >= 100 ? 0 : 2,
+      })
+    );
+  }
+  return "$" + value.toFixed(value < 0.01 ? 4 : 3);
+}
+
+function formatChange(value) {
+  if (value == null) return { text: "—", up: null };
+  const rounded = Math.round(value * 10) / 10;
+  return { text: `${Math.abs(rounded).toFixed(1)}%`, up: rounded > 0 ? true : rounded < 0 ? false : null };
+}
+
+async function fetchPrices() {
+  const ids = COIN_CONFIG.map((c) => c.id).join(",");
+  const url = `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("CoinGecko request failed");
+  const data = await res.json();
+
+  return COIN_CONFIG.map((coin) => {
+    const entry = data[coin.id];
+    if (!entry) return { ...coin, price: "—", change: "—", up: null };
+    const change = formatChange(entry.usd_24h_change);
+    return {
+      ...coin,
+      price: formatPrice(entry.usd),
+      change: change.text,
+      up: change.up,
+    };
+  });
+}
 
 function TickerItem({ coin }) {
   const color =
@@ -50,6 +97,7 @@ function TickerItem({ coin }) {
 }
 
 export default function PriceTicker() {
+  const [coins, setCoins] = useState(FALLBACK_COINS);
   const frameRef = useRef(null);
   const trackRef = useRef(null);
   const posRef = useRef(0);
@@ -60,6 +108,29 @@ export default function PriceTicker() {
   const startPosRef = useRef(0);
   const rafRef = useRef(null);
 
+  // Fetch de precios reales — carga inicial + refresco cada 60s
+  useEffect(() => {
+    let cancelled = false;
+
+    async function load() {
+      try {
+        const fresh = await fetchPrices();
+        if (!cancelled) setCoins(fresh);
+      } catch (err) {
+        console.error("PriceTicker: no se pudo obtener precios de CoinGecko", err);
+        // Si falla, se mantienen los últimos precios conocidos
+      }
+    }
+
+    load();
+    const interval = setInterval(load, 60000);
+    return () => {
+      cancelled = true;
+      clearInterval(interval);
+    };
+  }, []);
+
+  // Animación: auto-scroll, pausa en hover, drag manual
   useEffect(() => {
     const frame = frameRef.current;
     const track = trackRef.current;
@@ -168,10 +239,10 @@ export default function PriceTicker() {
           willChange: "transform",
         }}
       >
-        {COINS.map((coin, i) => (
+        {coins.map((coin, i) => (
           <TickerItem key={`a-${i}`} coin={coin} />
         ))}
-        {COINS.map((coin, i) => (
+        {coins.map((coin, i) => (
           <TickerItem key={`b-${i}`} coin={coin} />
         ))}
       </div>
