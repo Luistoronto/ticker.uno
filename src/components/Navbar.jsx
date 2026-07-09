@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SearchModal from "./SearchModal";
+import PriceTicker from "./PriceTicker";
 
 export default function Navbar() {
   const [lang, setLang] = useState("es");
@@ -63,8 +64,8 @@ export default function Navbar() {
             ticker<span style={{ color: "#f97316" }}>.</span>uno
           </Link>
 
-          {/* Spacer */}
-          <div style={{ flex: 1 }} />
+          {/* Cinta de precios — entre el logo y el buscador */}
+          <PriceTicker />
 
           {/* Buscador */}
           <button
@@ -81,6 +82,7 @@ export default function Navbar() {
               background: "#fafafa",
               cursor: "pointer",
               width: "160px",
+              flexShrink: 0,
               transition: "border-color .15s",
             }}
             aria-label="Abrir buscador"
