@@ -63,7 +63,7 @@ export default function SectionClient({ section }) {
             fontSize: "11px", color: "#6b7280",
           }}>
             <span>★</span>
-            <span>{lang === "es" ? "Sección disponible para patrocinar — contacto@ticker.uno" : "Section available to sponsor — contacto@ticker.uno"}</span>
+            <span>{lang === "es" ? "Sección disponible para patrocinar — hi@ticker.uno" : "Section available to sponsor — hi@ticker.uno"}</span>
           </div>
         )}
 
