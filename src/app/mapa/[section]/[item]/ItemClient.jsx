@@ -167,7 +167,7 @@ export default function ItemClient({ item, subcategory, section }) {
               border: "1px solid #fed7aa", borderRadius: "10px",
               padding: "2px 8px", flexShrink: 0,
             }}>
-              contacto@ticker.uno
+              hi@ticker.uno
             </span>
           </div>
 
