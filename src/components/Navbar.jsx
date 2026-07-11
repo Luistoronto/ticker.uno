@@ -45,28 +45,36 @@ export default function Navbar() {
       }}>
         <div style={{
           maxWidth: "1280px",
-          padding: "0 24px 0 16px",
+          padding: "0 24px 0 0",
           height: "52px",
           display: "flex",
           alignItems: "center",
           gap: "16px",
         }}>
 
-          {/* Logo — imagen, arriba a la izquierda */}
-          <Link href="/mapa" style={{
-            display: "flex",
-            alignItems: "center",
+          {/* Caja del logo — mismo ancho que el Sidebar (200px), logo centrado adentro */}
+          <div style={{
+            width: "200px",
             flexShrink: 0,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
           }}>
-            <Image
-              src="/logo-ticker-uno.png"
-              alt="ticker.uno"
-              width={212}
-              height={116}
-              priority
-              style={{ height: "22px", width: "auto" }}
-            />
-          </Link>
+            <Link href="/mapa" style={{
+              display: "flex",
+              alignItems: "center",
+            }}>
+              <Image
+                src="/logo-ticker-uno.png"
+                alt="ticker.uno"
+                width={212}
+                height={116}
+                priority
+                style={{ height: "22px", width: "auto" }}
+              />
+            </Link>
+          </div>
 
           {/* Cinta de precios — entre el logo y el buscador */}
           <PriceTicker />
