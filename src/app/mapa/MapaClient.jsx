@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Sidebar from "@/components/Sidebar";
 import { sections } from "@/data/content";
 
-export default function MapaClient() {
+export default function MapaClient({ children }) {
   const [lang, setLang] = useState("es");
 
   useEffect(() => {
@@ -14,14 +15,14 @@ export default function MapaClient() {
 
   const t = {
     es: {
-      hero: "Mapa del ecosistema cripto",
       sub: "350+ conceptos organizados por capas. Desde Bitcoin hasta DeFi, regulación y más.",
       soon: "Próximamente",
+      whales: "Grandes movimientos",
     },
     en: {
-      hero: "Crypto ecosystem map",
       sub: "350+ concepts organized by layers. From Bitcoin to DeFi, regulation and more.",
       soon: "Coming soon",
+      whales: "Whale movements",
     },
   };
   const tx = t[lang];
@@ -37,14 +38,16 @@ export default function MapaClient() {
 
         <div style={{ padding: "40px 40px", maxWidth: "960px" }}>
 
-          {/* Hero */}
+          {/* Hero — logo en vez del título de texto */}
           <div style={{ marginBottom: "32px" }}>
-            <h1 style={{
-              fontSize: "24px", fontWeight: "600", color: "#111",
-              letterSpacing: "-0.5px", marginBottom: "8px",
-            }}>
-              {tx.hero}
-            </h1>
+            <Image
+              src="/logo-ticker-uno.png"
+              alt="ticker.uno"
+              width={212}
+              height={116}
+              priority
+              style={{ height: "40px", width: "auto", marginBottom: "12px" }}
+            />
             <p style={{ fontSize: "13px", color: "#374151", maxWidth: "480px", lineHeight: "1.6" }}>
               {tx.sub}
             </p>
@@ -70,6 +73,20 @@ export default function MapaClient() {
               </div>
             ))}
           </div>
+
+          {/* Grandes movimientos — WhaleMovements llega como children
+              desde page.jsx (Server Component) */}
+          {children && (
+            <div style={{ marginBottom: "36px" }}>
+              <h2 style={{
+                fontSize: "15px", fontWeight: "600", color: "#111",
+                marginBottom: "14px",
+              }}>
+                {tx.whales}
+              </h2>
+              {children}
+            </div>
+          )}
 
           {/* Grid de secciones */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px" }}>
