@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import SearchModal from "./SearchModal";
 import PriceTicker from "./PriceTicker";
@@ -52,16 +53,20 @@ export default function Navbar() {
           gap: "16px",
         }}>
 
-          {/* Logo — negro, solo texto */}
+          {/* Logo — imagen, arriba a la izquierda */}
           <Link href="/mapa" style={{
-            fontSize: "15px",
-            fontWeight: "600",
-            color: "#111111",
-            textDecoration: "none",
-            letterSpacing: "-0.4px",
+            display: "flex",
+            alignItems: "center",
             flexShrink: 0,
           }}>
-            ticker<span style={{ color: "#f97316" }}>.</span>uno
+            <Image
+              src="/logo-ticker-uno.png"
+              alt="ticker.uno"
+              width={212}
+              height={116}
+              priority
+              style={{ height: "22px", width: "auto" }}
+            />
           </Link>
 
           {/* Cinta de precios — entre el logo y el buscador */}
