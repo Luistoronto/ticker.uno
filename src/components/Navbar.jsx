@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import SearchModal from "./SearchModal";
 import PriceTicker from "./PriceTicker";
@@ -44,25 +45,36 @@ export default function Navbar() {
       }}>
         <div style={{
           maxWidth: "1280px",
-          margin: "0 auto",
-          padding: "0 24px",
+          padding: "0 24px 0 0",
           height: "52px",
           display: "flex",
           alignItems: "center",
           gap: "16px",
         }}>
 
-          {/* Logo — negro, solo texto */}
-          <Link href="/mapa" style={{
-            fontSize: "15px",
-            fontWeight: "600",
-            color: "#111111",
-            textDecoration: "none",
-            letterSpacing: "-0.4px",
+          {/* Caja del logo — mismo ancho que el Sidebar (200px), logo centrado adentro */}
+          <div style={{
+            width: "200px",
             flexShrink: 0,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
           }}>
-            ticker<span style={{ color: "#f97316" }}>.</span>uno
-          </Link>
+            <Link href="/mapa" style={{
+              display: "flex",
+              alignItems: "center",
+            }}>
+              <Image
+                src="/logo-ticker-uno.png"
+                alt="ticker.uno"
+                width={212}
+                height={116}
+                priority
+                style={{ height: "28px", width: "auto" }}
+              />
+            </Link>
+          </div>
 
           {/* Cinta de precios — entre el logo y el buscador */}
           <PriceTicker />
